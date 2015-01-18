@@ -117,6 +117,12 @@ Ipsum.prototype.runYear = function(string){
   return string.replace(/#_YEAR/g, randVal(1922, 2012));
 };
 
+Ipsum.prototype.runAdjectives = function(string){
+  return string.replace(/#_ADJ/g, function(match){
+    return this.getSentence('adjectives');
+  }.bind(this));
+};
+
 Ipsum.prototype.buildParagraph = function(beds, baths){
   arr = [];
   arr.push(this.getSentence('introductory'));
@@ -132,6 +138,8 @@ Ipsum.prototype.buildParagraph = function(beds, baths){
   para = this.runBedBath(para, beds, baths);
   para = this.runLocation(para);
   para = this.runYear(para);
+
+  para = this.runAdjectives(para);
 
   return para;
 
