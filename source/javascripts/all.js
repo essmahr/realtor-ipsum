@@ -108,8 +108,9 @@ Ipsum.prototype.runBedBath = function(string, bedNum, bathNum) {
 };
 
 Ipsum.prototype.runLocation = function(string){
-  var location = this.getSentence('locations');
-  return string.replace(/#_LOC/g, location);
+  return string.replace(/#_LOC/g, function(match){
+    return this.getSentence('locations');
+  }.bind(this));
 };
 
 Ipsum.prototype.runYear = function(string){
