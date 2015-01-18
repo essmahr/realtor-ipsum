@@ -5,6 +5,14 @@
   %label{:for => "baths"}
     .input-label Baths
     %input{:type => "number", :name => "baths", :value => 1, :max => 6,  :min => 1}
+  %label{:for => "size"}
+    .input-label Size
+    %select{:name => "size"}
+      %option{:value => "small"} Small
+      %option{:value => "medium"} Medium
+      %option{:value => "large"} Large
+      %option{:value => "xlarge"} Super Large
   %input#submit{:type => "submit", :value => 'generate'}
+
 #blurb
   .inner

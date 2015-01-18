@@ -98,22 +98,34 @@ label {
   }
 }
 
-input[type="number"] {
+input[type="number"], select {
   display: block;
-  text-align: center;
-  padding: 0.5em;
-  width: 4em;
   height: 4em;
   background: #fff;
   border: 1px solid darken($bg, 15%);
   border-radius: 2px;
-  cursor: pointer;
+  text-align: center;
+  padding: 0.5em;
   &:hover {
     border-color: darken($bg, 24%);
   }
   &:focus {
     border-color: $blue;
     outline: 0;
+  }
+}
+
+input[type="number"] {
+  width: 4em;
+  cursor: pointer;
+}
+
+select {
+  @include appearance(none);
+  padding-left: 1em;
+  padding-right: 1em;
+  option {
+    text-align: center;
   }
 }
 

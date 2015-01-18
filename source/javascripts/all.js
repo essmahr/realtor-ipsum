@@ -123,13 +123,45 @@ Ipsum.prototype.runAdjectives = function(string){
   }.bind(this));
 };
 
-Ipsum.prototype.buildParagraph = function(beds, baths){
+Ipsum.prototype.buildParagraph = function(beds, baths, size){
   arr = [];
+
   arr.push(this.getSentence('introductory'));
-  arr.push(this.getSentence('bedbath'));
-  arr.push(this.getSentence('home'));
-  arr.push(this.getSentence('grounds'));
-  arr.push(this.getSentence('location'));
+
+  switch (size) {
+    case 'small':
+      // arr.push(this.buildDblClause());
+      // arr.push(this.getSentence('home'));
+      // arr.push(this.getSentence('location'));
+      break;
+    case 'medium':
+      arr.push(this.getSentence('bedbath'));
+      arr.push(this.buildDblClause());
+      arr.push(this.getSentence('location'));
+      break;
+    case 'large':
+      arr.push(this.buildDblClause());
+      arr.push(this.getSentence('bedbath'));
+      arr.push(this.getSentence('home'));
+      arr.push(this.getSentence('home'));
+      arr.push(this.getSentence('location'));
+      arr.push(this.getSentence('grounds'));
+      break;
+    case 'xlarge':
+      arr.push(this.buildDblClause());
+      arr.push(this.getSentence('bedbath'));
+      arr.push(this.getSentence('home'));
+      arr.push(this.getSentence('home'));
+      arr.push(this.getSentence('home'));
+      arr.push(this.buildDblClause());
+      arr.push(this.getSentence('home'));
+      arr.push(this.getSentence('location'));
+      arr.push(this.getSentence('location'));
+      arr.push(this.getSentence('home'));
+      arr.push(this.getSentence('grounds'));
+      break;
+  }
+
   arr.push(this.buildFeatureList());
   arr.push(this.getSentence('conclusions'));
 
@@ -174,10 +206,11 @@ function generateBlurb(evt) {
 
   var container = document.getElementById('blurb');
 
-  var beds = evt.target.elements['beds'].value || 1;
-  var baths = evt.target.elements['baths'].value || 1;
+  var beds = evt.target.elements['beds'].value;
+  var baths = evt.target.elements['baths'].value;
+  var size = evt.target.elements['size'].value;
 
-  var blurb = ipsum.buildParagraph(beds, baths);
+  var blurb = ipsum.buildParagraph(beds, baths, size);
 
   if (container.className == 'active') {
     container.children[0].className = '';
