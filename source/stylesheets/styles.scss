@@ -46,10 +46,7 @@ body {
 
 header {
   text-align: center;
-  margin: 4em 0 3em;
-  padding: 1.5em 0 2em;
-  border-bottom: 1px solid darken($bg, 15%);
-  border-top: 1px solid darken($bg, 15%);
+  margin: 4em 0 6em;
 }
 
 h1 {
@@ -71,7 +68,7 @@ h2 {
 }
 
 #generator {
-  margin-bottom: 3em;
+  margin-bottom: 1em;
   @include clearfix();
 }
 
@@ -102,12 +99,13 @@ input[type="number"], select {
   display: block;
   height: 4em;
   background: #fff;
-  border: 1px solid darken($bg, 15%);
+  // border: 1px solid darken($bg, 15%);
+  border: 1px solid transparent;
   border-radius: 2px;
   text-align: center;
   padding: 0.5em;
   &:hover {
-    border-color: darken($bg, 24%);
+    border-color: darken($bg, 5%);
   }
   &:focus {
     border-color: $blue;
@@ -153,9 +151,9 @@ input[type="submit"] {
 
 #blurb {
   opacity: 0;
-  padding: 2.5em 3em;
+  padding: 1em 1.5em;
   background: #fff;
-  border: 1px solid darken($bg, 15%);
+  // border: 1px solid darken($bg, 15%);
   border-radius: 2px;
   text-align: justify;
   color: #222;

@@ -114,7 +114,9 @@ Ipsum.prototype.runLocation = function(string){
 };
 
 Ipsum.prototype.runYear = function(string){
-  return string.replace(/#_YEAR/g, randVal(1922, 2012));
+  return string.replace(/#_YEAR/g, function(match){
+    return randVal(1922, 2012);
+  });
 };
 
 Ipsum.prototype.runAdjectives = function(string){
@@ -151,13 +153,13 @@ Ipsum.prototype.buildParagraph = function(beds, baths, size){
       arr.push(this.buildDblClause());
       arr.push(this.getSentence('bedbath'));
       arr.push(this.getSentence('home'));
+      arr.push(this.getSentence('grounds'));
       arr.push(this.getSentence('home'));
       arr.push(this.getSentence('home'));
       arr.push(this.buildDblClause());
       arr.push(this.getSentence('home'));
       arr.push(this.getSentence('location'));
       arr.push(this.getSentence('location'));
-      arr.push(this.getSentence('home'));
       arr.push(this.getSentence('grounds'));
       break;
   }
