@@ -1,0 +1,152 @@
+@charset "utf-8";
+
+@import "bourbon";
+@import "normalize";
+
+$blue: #27B5D9;
+$bg: #F2F2ED;
+$red: #C6050D;
+
+* {
+  &, &:before, &:after {
+    @include box-sizing(border-box);
+  }
+}
+
+::selection {
+  background: transparent;
+  color: $blue;
+}
+::-moz-selection {
+  background: transparent;
+  color: $blue;
+}
+
+body {
+  font-size: (14em/16);
+  font-family: 'Inconsolata', sans-serif;
+  color: #222;
+  background: $bg;
+  line-height: 1.5;
+}
+
+#page {
+  max-width: 500px;
+  margin: 0 auto 6em;;
+  padding: 0 1em;
+}
+
+header {
+  text-align: center;
+  margin: 4em 0 3em;
+  padding: 1.5em 0 2em;
+  border-bottom: 1px solid darken($bg, 15%);
+  border-top: 1px solid darken($bg, 15%);
+}
+
+h1 {
+  font-family: 'Abril Fatface', sans-serif;
+  font-size: 3.75em;
+  color: $red;
+  margin: 0;
+  i {
+    color: darken($bg, 15%);
+  }
+}
+
+h2 {
+  font-size: (16em/14);
+  margin: 0;
+  color: #888;
+  letter-spacing: 0.05em;
+}
+
+#generator {
+  margin-bottom: 3em;
+  @include clearfix();
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+label {
+  position: relative;
+  display: block;
+  float: left;
+  margin-right: 0.5em;
+  .input-label {
+    position: absolute;
+    top: 4px;
+    left: 7px;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #888;
+  }
+}
+
+input[type="number"] {
+  display: block;
+  text-align: center;
+  padding: 0.5em;
+  width: 4em;
+  height: 4em;
+  background: #fff;
+  border: 1px solid darken($bg, 15%);
+  border-radius: 2px;
+  cursor: pointer;
+  &:hover {
+    border-color: darken($bg, 24%);
+  }
+  &:focus {
+    border-color: $blue;
+    outline: 0;
+  }
+}
+
+input[type="submit"] {
+  height: 4em;
+  text-align: center;
+  padding: 0.5em 1.5em;
+  min-width: 8em;
+  background: $blue;
+  color: #fff;
+  border: 3px solid $blue;
+  border-radius: 2px;
+  float: right;
+  &:focus {
+    border-color: darken($blue, 5%);
+    outline: 0;
+  }
+  &:hover {
+    border-color: darken($blue, 7%);
+  }
+  &:active {
+    background: darken($blue, 7%);
+  }
+}
+
+#blurb {
+  opacity: 0;
+  padding: 3em;
+  background: #fff;
+  border: 1px solid darken($bg, 15%);
+  border-radius: 2px;
+  text-align: justify;
+  color: #222;
+  @include transition(opacity .3s $ease-in-out-quart);
+  &.active {
+    opacity: 1;
+  }
+  > div {
+    @include transition(opacity .3s $ease-in-out-quart);
+    opacity: 0;
+    &.active {
+      opacity: 1;
+    }
+  }
+}

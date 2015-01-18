@@ -1,0 +1,10 @@
+%form#generator{:name=> 'generator'}
+  %label{:for => "beds"}
+    .input-label Beds
+    %input{:type => "number", :name => "beds", :max => 6, :min => 1}
+  %label{:for => "baths"}
+    .input-label Baths
+    %input{:type => "number", :name => "baths", :max => 6,  :min => 1}
+  %input#submit{:type => "submit", :value => 'generate'}
+#blurb
+  .inner
