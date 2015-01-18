@@ -14,7 +14,7 @@ Ipsum.prototype.init = function(){
     }).then(function(json) {
       this.storedData = json
       this._setupData(json);
-      console.log('parsed json', json)
+      // console.log('parsed json', json)
     }.bind(this)).catch(function(ex) {
       console.log('parsing failed', ex)
     });
@@ -91,13 +91,13 @@ Ipsum.prototype.runBedBath = function(string, bedNum, bathNum) {
   // var bathplur = (bathNum>1) ? 's' : '';
   if (this.switch % 4 == 0) {
     bed = bedNum+' #_ADJ bedroom';
-    bath = bedNum+' bathroom';
+    bath = bathNum+' bathroom';
   } else if (this.switch % 3 == 0) {
     bed = bedNum+'BR';
-    bath = bedNum+'bath';
+    bath = bathNum+' bath';
   } else {
     bed = bedNum+' bed';
-    bath = bedNum+' bathroom';
+    bath = bathNum+' bathroom';
   }
 
   string = string.replace(/#_BED/g, bed);
@@ -116,7 +116,7 @@ Ipsum.prototype.runYear = function(string){
   return string.replace(/#_YEAR/g, randVal(1922, 2012));
 };
 
-Ipsum.prototype.buildParagraph = function(){
+Ipsum.prototype.buildParagraph = function(beds, baths){
   arr = [];
   arr.push(this.getSentence('introductory'));
   arr.push(this.getSentence('bedbath'));
@@ -128,7 +128,7 @@ Ipsum.prototype.buildParagraph = function(){
 
   var para = arr.join(' ');
 
-  para = this.runBedBath(para, 2, 2);
+  para = this.runBedBath(para, beds, baths);
   para = this.runLocation(para);
   para = this.runYear(para);
 
@@ -156,15 +156,19 @@ function shuffle(arr){ //v1.0
 var ipsum = new Ipsum();
 ipsum.init();
 
-document.generator.onsubmit = function(){
-  return generateBlurb();
+document.generator.onsubmit = function(evt){
+  return generateBlurb(evt);
 }
 
 
 function generateBlurb(evt) {
 
   var container = document.getElementById('blurb');
-  var blurb = ipsum.buildParagraph();
+
+  var beds = evt.target.elements['beds'].value || 1;
+  var baths = evt.target.elements['baths'].value || 1;
+
+  var blurb = ipsum.buildParagraph(beds, baths);
 
   if (container.className == 'active') {
     container.children[0].className = '';
@@ -176,6 +180,6 @@ function generateBlurb(evt) {
     container.children[0].innerHTML = blurb;
     container.className = container.children[0].className = 'active';
   }
-  document.getElementById('submit').value = 'generate again'
+  evt.target.elements.submit.value = 'generate again'
   return false;
 }

@@ -50,6 +50,7 @@ h1 {
   color: $red;
   margin: 0;
   i {
+    font-size: (48em/53);
     color: darken($bg, 15%);
   }
 }
@@ -132,7 +133,7 @@ input[type="submit"] {
 
 #blurb {
   opacity: 0;
-  padding: 3em;
+  padding: 2.5em 3em;
   background: #fff;
   border: 1px solid darken($bg, 15%);
   border-radius: 2px;
