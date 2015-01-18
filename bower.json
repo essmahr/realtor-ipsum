@@ -1,0 +1,17 @@
+{
+  "name": "realtoripsum",
+  "version": "0.0.0",
+  "homepage": "https://github.com/essmahr/realtor-ipsum",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "es6-promise": "~2.0.1",
+    "fetch": "~0.6.1"
+  }
+}
