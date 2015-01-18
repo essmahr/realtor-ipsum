@@ -24,16 +24,23 @@ $red: #C6050D;
 }
 
 body {
+  @include display(flex);
   font-size: (14em/16);
   font-family: 'Inconsolata', sans-serif;
   color: #222;
   background: $bg;
   line-height: 1.5;
+  min-height: 100vh;
+  @include flex-direction(column);
 }
 
 #page {
+  @include flex(1);
+}
+
+#content {
   max-width: 500px;
-  margin: 0 auto 6em;;
+  margin: 0 auto 2em;
   padding: 0 1em;
 }
 
@@ -149,6 +156,41 @@ input[type="submit"] {
     opacity: 0;
     &.active {
       opacity: 1;
+    }
+  }
+}
+
+footer {
+  .inner {
+    max-width: 500px;
+    padding: 0.5em 1em;
+    font-size: (12em/14);
+    margin: 0 auto;
+    @include display(flex);
+    @include justify-content(space-between);
+    color: #aaa;
+    cursor: default;
+    a {
+      color: #aaa;
+      text-decoration: none;
+      &:hover {
+        color: $red;
+      }
+    }
+    .left {
+      @include flex(1);
+      a {
+        text-decoration: underline;
+      }
+    }
+    .right {
+      @include flex(1);
+      text-align: right;
+      .hide {
+        position: absolute;
+        left: -9999px;
+        top: -9999px;
+      }
     }
   }
 }
