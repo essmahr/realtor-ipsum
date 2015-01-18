@@ -42,11 +42,12 @@ body {
   max-width: 500px;
   margin: 0 auto 2em;
   padding: 0 1em;
+  position: relative;
 }
 
 header {
   text-align: center;
-  margin: 4em 0 6em;
+  padding: 4em 0 6em;
 }
 
 h1 {
@@ -65,6 +66,34 @@ h2 {
   margin: 0;
   color: #888;
   letter-spacing: 0.05em;
+}
+
+h3 {
+  position: absolute;
+  right: -6em;
+  top: -2em;
+  width: 114px;
+  height: 114px;
+  background: url('../images/starburst.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center;
+  color: $blue;
+  padding-top: 38px;
+  line-height: 1;
+  @include transform(rotate(15deg));
+  .up, .down {
+    display: block;
+    font-size: (10em/16);
+  }
+  em.real {
+    display: block;
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-style: normal;
+    font-size: (14em/16);
+    margin: (3em/16) 0 (4em/16);
+  }
 }
 
 #generator {
