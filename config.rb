@@ -49,6 +49,17 @@ set :js_dir, 'javascripts'
 
 set :images_dir, 'images'
 
+# Requires middleman-deploy and rsync
+activate :deploy do |deploy|
+  deploy.method = :rsync
+  deploy.host   = ENV['HOST']
+  deploy.path   = ENV['REMOTEPATH']
+  deploy.user   = ENV['FTPUSER']
+  # Optional Settings
+  deploy.port  = 2222 # ssh port, default: 22
+  deploy.clean = false # remove orphaned files on remote host, default: false
+end
+
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment

@@ -36,6 +36,7 @@ body {
 
 #page {
   @include flex(1);
+  min-width: 528px;
 }
 
 #content {
@@ -53,6 +54,7 @@ header {
 h1 {
   font-family: 'Abril Fatface', sans-serif;
   font-size: 3.75em;
+  font-weight: normal;
   color: $red;
   margin: 0;
   i {
@@ -63,6 +65,7 @@ h1 {
 
 h2 {
   font-size: (16em/14);
+  font-weight: normal;
   margin: 0;
   color: #888;
   letter-spacing: 0.05em;
@@ -70,6 +73,7 @@ h2 {
 
 h3 {
   position: absolute;
+  font-weight: normal;
   right: -6em;
   top: -2em;
   width: 114px;
@@ -79,7 +83,7 @@ h3 {
   background-size: contain;
   text-align: center;
   color: $blue;
-  padding-top: 38px;
+  padding-top: 36px;
   line-height: 1;
   @include transform(rotate(15deg));
   .up, .down {
@@ -92,7 +96,7 @@ h3 {
     text-decoration: underline;
     font-style: normal;
     font-size: (14em/16);
-    margin: (3em/16) 0 (4em/16);
+    margin: (4em/16) 0 (5em/16);
   }
 }
 
@@ -131,7 +135,6 @@ input[type="number"], select {
   // border: 1px solid darken($bg, 15%);
   border: 1px solid transparent;
   border-radius: 2px;
-  text-align: center;
   padding: 0.5em;
   &:hover {
     border-color: darken($bg, 5%);
@@ -144,16 +147,17 @@ input[type="number"], select {
 
 input[type="number"] {
   width: 4em;
+  text-align: center;
   cursor: pointer;
+  @include appearance(textfield);
 }
 
 select {
-  @include appearance(none);
+  @include appearance(textfield);
   padding-left: 1em;
   padding-right: 1em;
-  option {
-    text-align: center;
-  }
+  text-indent: 0.01px;
+  text-overflow: '';
 }
 
 input[type="submit"] {
