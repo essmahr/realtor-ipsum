@@ -36,11 +36,11 @@ body {
 
 #page {
   @include flex(1);
-  min-width: 528px;
+  min-width: (528em/14);
 }
 
 #content {
-  max-width: 500px;
+  max-width: (500em/14);
   margin: 0 auto 2em;
   padding: 0 1em;
   position: relative;
@@ -76,14 +76,14 @@ h3 {
   font-weight: normal;
   right: -6em;
   top: -2em;
-  width: 114px;
-  height: 114px;
+  width: (114em/16);
+  height: (114em/16);
   background: url('../images/starburst.svg');
   background-repeat: no-repeat;
   background-size: contain;
   text-align: center;
   color: $blue;
-  padding-top: 36px;
+  padding-top: (36em/16);
   line-height: 1;
   @include transform(rotate(15deg));
   .up, .down {
@@ -156,8 +156,6 @@ select {
   @include appearance(textfield);
   padding-left: 1em;
   padding-right: 1em;
-  text-indent: 0.01px;
-  text-overflow: '';
 }
 
 input[type="submit"] {
@@ -205,7 +203,7 @@ input[type="submit"] {
 
 footer {
   .inner {
-    max-width: 500px;
+    max-width: (500em/14);
     padding: 0.5em 1em;
     font-size: (12em/14);
     margin: 0 auto;
@@ -235,5 +233,22 @@ footer {
         top: -9999px;
       }
     }
+  }
+}
+
+@media screen and (max-width: 680px) {
+
+  body {
+    font-size: 12px;
+  }
+
+  h3 {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  body {
+    font-size: 16px;
   }
 }
