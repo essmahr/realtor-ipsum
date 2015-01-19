@@ -41,6 +41,7 @@ configure :development do
   activate :livereload
 end
 
+activate :dotenv
 
 set :css_dir, 'stylesheets'
 
