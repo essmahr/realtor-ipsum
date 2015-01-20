@@ -8,6 +8,9 @@ $blue: #27B5D9;
 $bg: #F2F2ED;
 $red: #C6050D;
 
+// GLOBAL
+// --------------------------------------------------
+
 * {
   &, &:before, &:after {
     @include box-sizing(border-box);
@@ -23,6 +26,12 @@ $red: #C6050D;
   color: $blue;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
 body {
   @include display(flex);
   font-size: (14em/16);
@@ -36,7 +45,6 @@ body {
 
 #page {
   @include flex(1);
-  min-width: (528em/14);
 }
 
 #content {
@@ -46,25 +54,25 @@ body {
   position: relative;
 }
 
+// HEADER
+// --------------------------------------------------
+
 header {
   text-align: center;
-  padding: 4em 0 6em;
 }
 
 h1 {
   font-family: 'Abril Fatface', sans-serif;
-  font-size: 3.75em;
   font-weight: normal;
   color: $red;
   margin: 0;
   i {
-    font-size: (48em/53);
     color: darken($bg, 15%);
+    font-size: (48em/53);
   }
 }
 
 h2 {
-  font-size: (16em/14);
   font-weight: normal;
   margin: 0;
   color: #888;
@@ -73,69 +81,43 @@ h2 {
 
 h3 {
   position: absolute;
-  font-weight: normal;
   right: -6em;
-  top: -2em;
-  width: (114em/16);
-  height: (114em/16);
-  background: url('../images/starburst.svg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  text-align: center;
-  color: $blue;
-  padding-top: (36em/16);
-  line-height: 1;
-  @include transform(rotate(15deg));
-  .up, .down {
-    display: block;
-    font-size: (10em/16);
-  }
-  em.real {
-    display: block;
-    text-transform: uppercase;
-    text-decoration: underline;
-    font-style: normal;
-    font-size: (14em/16);
-    margin: (4em/16) 0 (5em/16);
-  }
+  top: -10em;
+  @include transition(top 0.5s $ease-in-out-quart);
 }
+
+// FORM
+// --------------------------------------------------
 
 #generator {
+  @include display(flex);
+  @include flex-wrap(wrap);
+  margin: 0 -0.25em;
   margin-bottom: 1em;
-  @include clearfix();
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 label {
+  @include flex(1);
+  @include flex-shrink(0);
+  @include flex-grow(0);
   position: relative;
-  display: block;
-  float: left;
-  margin-right: 0.5em;
+  @include display(flex);
   .input-label {
     position: absolute;
-    top: 4px;
-    left: 7px;
-    font-size: 10px;
+    font-size: (10em/14);
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: #888;
   }
 }
 
-input[type="number"], select {
-  display: block;
-  height: 4em;
+input, select {
+  @include appearance(none);
+  @include flex(1);
   background: #fff;
-  // border: 1px solid darken($bg, 15%);
   border: 1px solid transparent;
   border-radius: 2px;
-  padding: 0.5em;
+  margin: 0.25em;
   &:hover {
     border-color: darken($bg, 5%);
   }
@@ -146,28 +128,18 @@ input[type="number"], select {
 }
 
 input[type="number"] {
-  width: 4em;
   text-align: center;
   cursor: pointer;
-  @include appearance(textfield);
-}
-
-select {
-  @include appearance(textfield);
-  padding-left: 1em;
-  padding-right: 1em;
 }
 
 input[type="submit"] {
-  height: 4em;
+  @include flex(1);
+  @include flex-shrink(0);
   text-align: center;
-  padding: 0.5em 1.5em;
-  min-width: 8em;
   background: $blue;
   color: #fff;
   border: 3px solid $blue;
   border-radius: 2px;
-  float: right;
   &:focus {
     border-color: darken($blue, 5%);
     outline: 0;
@@ -181,10 +153,9 @@ input[type="submit"] {
 }
 
 #blurb {
-  opacity: 0;
   padding: 1em 1.5em;
+  opacity: 0;
   background: #fff;
-  // border: 1px solid darken($bg, 15%);
   border-radius: 2px;
   text-align: justify;
   color: #222;
@@ -203,7 +174,7 @@ input[type="submit"] {
 
 footer {
   .inner {
-    max-width: (500em/14);
+    max-width: (500em/12);
     padding: 0.5em 1em;
     font-size: (12em/14);
     margin: 0 auto;
@@ -236,14 +207,115 @@ footer {
   }
 }
 
-@media screen and (max-width: 680px) {
 
-  body {
-    font-size: 12px;
+@media screen and (max-width: 679px) {
+
+  // HEADER
+
+  header {
+    padding: 2em 0;
+  }
+  h1 {
+    font-size: 2.5em;
+  }
+  h2 {
+    font-size: 0.875em;
   }
 
+  // FORM
+
+  label {
+    &.num {
+      @include flex-basis(50%);
+    }
+    &.input {
+      @include flex-basis(100%);
+    }
+    .input-label {
+      top: 12px;
+      right: 12px;
+    }
+  }
+
+  input, select {
+    padding: 0.5em 1em;
+  }
+}
+
+@media screen and (min-width: 680px) {
+
+  // HEADER
+
+  header {
+    padding: 4em 0 6em;
+  }
+
+  h1 {
+    font-size: 3.75em;
+  }
+
+  h2 {
+    font-size: (16em/14);
+  }
+
+
+  // FORM
+
+  label {
+    &.num {
+      @include flex-basis((63em/14));
+    }
+    &.input {
+      @include flex-basis((117em/14));
+    }
+    .input-label {
+      top: 10px;
+      left: 12px;
+    }
+  }
+
+  input, select {
+    padding: (18em/14);
+  }
+
+  input[type="submit"] {
+    @include flex-basis((117em/14));
+    margin-left: auto;
+    max-width: 10em;
+  }
+
+
+  // FOOTER
+
+
+}
+
+@media screen and (min-width: 720px) {
   h3 {
-    display: none;
+    font-weight: normal;
+    top: -2em;
+    width: (114em/16);
+    height: (114em/16);
+    background: url('../images/starburst.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-align: center;
+    color: $blue;
+    padding-top: (36em/16);
+    line-height: 1;
+    @include transform(rotate(15deg));
+    .up, .down {
+      display: block;
+      font-size: (10em/16);
+    }
+    em.real {
+      display: block;
+      text-transform: uppercase;
+      text-decoration: underline;
+      font-style: normal;
+      font-size: (14em/16);
+      margin: (4em/16) 0 (5em/16);
+    }
   }
 }
 

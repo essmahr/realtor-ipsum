@@ -1,11 +1,11 @@
 %form#generator{:name=> 'generator'}
-  %label{:for => "beds"}
+  %label.num{:for => "beds"}
     .input-label Beds
     %input{:type => "number", :name => "beds", :value => 1, :max => 6, :min => 1}
-  %label{:for => "baths"}
+  %label.num{:for => "baths"}
     .input-label Baths
     %input{:type => "number", :name => "baths", :value => 1, :max => 6,  :min => 1}
-  %label{:for => "size"}
+  %label.input{:for => "size"}
     .input-label Size
     %select{:name => "size"}
       %option{:value => "small"} Small
