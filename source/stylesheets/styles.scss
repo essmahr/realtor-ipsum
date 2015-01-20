@@ -208,7 +208,7 @@ footer {
 }
 
 
-@media screen and (max-width: 679px) {
+@media screen and (max-width: 569px) {
 
   // HEADER
 
@@ -220,6 +220,10 @@ footer {
   }
   h2 {
     font-size: 0.875em;
+  }
+
+  h3 {
+    display: none;
   }
 
   // FORM
@@ -242,7 +246,23 @@ footer {
   }
 }
 
-@media screen and (min-width: 680px) {
+@media screen and (min-width: 430px) and (max-width: 569px) {
+
+  header {
+    padding: 2em 0 3em;
+  }
+
+  h1 {
+    font-size: 3.25em;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+
+}
+
+@media screen and (min-width: 570px) {
 
   // HEADER
 
