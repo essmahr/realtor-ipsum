@@ -175,7 +175,7 @@ input[type="submit"] {
 footer {
   .inner {
     max-width: (500em/12);
-    padding: 0.5em 1em;
+    padding: 1em;
     font-size: (12em/14);
     margin: 0 auto;
     @include display(flex);
