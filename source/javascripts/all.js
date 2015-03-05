@@ -1,5 +1,6 @@
 //= require fetch/fetch
 //= require es6-promise/promise
+//= require fastclick/lib/fastclick
 
 var dataURL = '/data/content.json';
 
@@ -222,6 +223,8 @@ document.generator.onsubmit = function(evt){
   evt.preventDefault();
   return generateBlurb(evt);
 }
+
+FastClick.attach(document.body);
 
 var ipsum = new Ipsum();
 ipsum.init();
