@@ -3,9 +3,7 @@
 
 var dataURL = '/data/content.json';
 
-var Ipsum = function(){
-
-}
+var Ipsum = function(){}
 
 Ipsum.prototype.init = function(){
   fetch(dataURL)
@@ -196,14 +194,6 @@ function shuffle(arr){ //v1.0
   return arr;
 };
 
-var ipsum = new Ipsum();
-ipsum.init();
-
-document.generator.onsubmit = function(evt){
-  return generateBlurb(evt);
-}
-
-
 function generateBlurb(evt) {
 
   var container = document.getElementById('blurb');
@@ -227,3 +217,12 @@ function generateBlurb(evt) {
   evt.target.elements.submit.value = 'generate again'
   return false;
 }
+
+document.generator.onsubmit = function(evt){
+  evt.preventDefault();
+  return generateBlurb(evt);
+}
+
+var ipsum = new Ipsum();
+ipsum.init();
+

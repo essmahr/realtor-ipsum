@@ -47,6 +47,15 @@ body {
   @include flex(1);
 }
 
+@include keyframes(fade-in) {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 #content {
   max-width: (500em/14);
   margin: 0 auto 2em;
@@ -59,6 +68,8 @@ body {
 
 header {
   text-align: center;
+  @include animation(fade-in 1s $ease-in-out-quart);
+  @include animation-fill-mode(backwards);
 }
 
 h1 {
@@ -94,6 +105,8 @@ h3 {
   @include flex-wrap(wrap);
   margin: 0 -0.25em;
   margin-bottom: 1em;
+  @include animation(fade-in 1s $ease-in-out-quart 0.1s);
+  @include animation-fill-mode(backwards);
 }
 
 label {
@@ -316,7 +329,7 @@ footer {
     top: -2em;
     width: (114em/16);
     height: (114em/16);
-    background: url('../images/starburst.svg');
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA0OC43IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MCA0OC43IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwb2x5Z29uIGZpbGw9IiNGRkZGRkYiIHBvaW50cz0iMjUsNC40IDMwLjYsMCAzMy43LDYuNCA0MC42LDQuOCA0MC42LDExLjkgNDcuNSwxMy41IDQ0LjUsMTkuOSA1MCwyNC40IDQ0LjUsMjguOCA0Ny41LDM1LjINCgk0MC42LDM2LjggNDAuNiw0My45IDMzLjcsNDIuNCAzMC42LDQ4LjcgMjUsNDQuNCAxOS40LDQ4LjcgMTYuMyw0Mi40IDkuNCw0My45IDkuNCwzNi44IDIuNSwzNS4yIDUuNSwyOC44IDAsMjQuNCA1LjUsMTkuOQ0KCTIuNSwxMy41IDkuNCwxMS45IDkuNCw0LjggMTYuMyw2LjQgMTkuNCwwICIvPg0KPC9zdmc+DQo=);
     background-repeat: no-repeat;
     background-size: contain;
     text-align: center;
