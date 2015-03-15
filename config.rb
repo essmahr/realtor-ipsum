@@ -56,7 +56,7 @@ activate :deploy do |deploy|
   deploy.path   = ENV['REMOTEPATH']
   deploy.user   = ENV['FTPUSER']
   # Optional Settings
-  deploy.port  = 2222 # ssh port, default: 22
+  # deploy.port  = 22 # ssh port, default: 22
   deploy.clean = false # remove orphaned files on remote host, default: false
 end
 
